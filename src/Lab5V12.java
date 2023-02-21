@@ -4,16 +4,17 @@ public class Lab5V12 {
     static final double eps=1e-4;
     
     public static double my_log(double x ) {
-        Scanner scan = new Scanner(System.in);
-    
-    int n=0;
-    double sum=(x-1)/x,c=x-1; 
-    double z=(n+1)*Math.pow((x+1), n+1);
-    while(Math.abs(c/n)>eps){
-    c*=(x-1); sum+=c/z;         
-    n++;
-}
-    return sum;
+        double sum = (x - 1) / x;
+        double c = x - 1;
+        double z;
+        int n = 1;
+        while (Math.abs(c / n) > eps) {
+            n++;
+            c *= -(x - 1);
+            z = Math.pow((n * (Math.E - 1) + 1) / (n - 1), n - 1);
+            sum += c / (n * z);
+        }
+        return sum;
     }
     static int count =0;
     static int n1=0,n2=1,n3=0;
